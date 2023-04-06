@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZedGraph;
+using LabRab_3.Дмитриченко;
 
 namespace LabRab_3
 {
@@ -14,7 +15,7 @@ namespace LabRab_3
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new LabRab_3.Дмитриченко.View());
         }
     }
 }
