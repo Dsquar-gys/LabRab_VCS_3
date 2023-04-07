@@ -16,5 +16,10 @@ namespace LabRab_3
         {
             InitializeComponent();
         }
+
+        public void SwitchLabel(string text)
+        {
+            label1.Text = text;
+        }
     }
 }
