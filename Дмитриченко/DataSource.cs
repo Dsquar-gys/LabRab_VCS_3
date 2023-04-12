@@ -19,28 +19,41 @@ namespace LabRab_3.Дмитриченко
         }
     }
 
-    public static class DataSource
+    public class DataSource : ISerializable
     {
         static WorkBook bookExcel;
         static WorkSheet sheetExcel;
 
-        public static void SetSource(string path, int sheetNum)
+        public List<int> yearTable { get; set; } = new List<int>();
+        public List<float> data { get; set; } = new List<float>();
+        public List<float> valueChanges { get; set; } = new List<float>();
+
+        public DataSource()
+        {
+            DataSource.SetSource();
+            this.ExtractData();
+        }
+
+        public static void SetSource()
         {
             bookExcel = new WorkBook("D:\\SUAI 2 year\\ТП\\ВВП.xlsx");
             sheetExcel = bookExcel.WorkSheets.First();
         }
 
-        public static List<GridSource> ExtractData()
+        public void ExtractData()
         {
-            List<GridSource> src = new List<GridSource>();
+            //List<GridSource> src = new List<GridSource>();
             var rows = sheetExcel.Rows;
             foreach (var row in rows.Skip(1))
             {
                 string[] temp = row.Take(2).Select(x => x.Value.ToString()).ToArray();
-                src.Add(new GridSource(temp[0],temp[1]));
+                //src.Add(new GridSource(temp[0],temp[1]));
+                yearTable.Add(int.Parse(temp[0]));
+                data.Add(float.Parse(temp[1].Replace('.',',')));
             }
-
-            return src;
+            valueChanges.Add(0);
+            for (int i = 1; i < data.Count; i++)
+                valueChanges.Add((data[i]-data[i-1])/data[i-1]*100);
         }
     }
 }
