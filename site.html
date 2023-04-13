@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lab3</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<style></style>
+<div class="graph">
+    <canvas id="myChart" ></canvas>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('myChart');
+  
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['2008', '2009', '2010','2011', '2012', '2013', '2014', '2015', '2016','2017', '2018', '2019', '2020', '2021', '2022'],
+        datasets: [{
+          label: 'Статистика за последние 15 лет',
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1,
+          
+
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+            
+          }
+        }
+      }
+    });
+  </script>
+</script>
+
+<body>
+<br>
+<div class="button">
+<input type=button value= "Дмитриченко">
+<input type=button value="Жуковский">
+<input type=button value="Мягков">
+</div>
+
+</body>
+</html>
