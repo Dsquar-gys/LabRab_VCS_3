@@ -36,7 +36,8 @@ namespace LabRab_3
 
         public static void SetSource()
         {
-            bookExcel = new WorkBook("D:\\SUAI 2 year\\ТП\\ВВП.xlsx");
+
+            bookExcel = new WorkBook("../Дмитриченко/ВВП.xlsx");
             sheetExcel = bookExcel.WorkSheets.First();
         }
 
@@ -49,7 +50,7 @@ namespace LabRab_3
                 string[] temp = row.Take(2).Select(x => x.Value.ToString()).ToArray();
                 //src.Add(new GridSource(temp[0],temp[1]));
                 yearTable.Add(int.Parse(temp[0]));
-                data.Add(float.Parse(temp[1].Replace('.',',')));
+                data.Add(float.Parse(temp[1]/*.Replace('.',',')*/));
             }
             valueChanges.Add(0);
             for (int i = 1; i < data.Count; i++)

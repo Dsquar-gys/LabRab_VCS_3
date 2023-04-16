@@ -1,19 +1,35 @@
-body {
-	margin: 0;
-	padding: 0;
-	flex-direction: column;
-	display: flex;
-	font-family: 'Times New Roman', Times, serif
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+	padding: 0;
+  margin: 0 auto;
+	font-family: 'Times New Roman', Times, serif;
+  width: 900px;
 }
 .graph{
 	height: 450px; 
-	width: 900px;
+	width: inherit;
 }
-.button{
-	
+.buttons {
+  flex-direction: row;
+  width: inherit;
 	display: flex;
 	font-size: 24px;
+  height: 40px;
 	justify-content: space-around;
-	
+}
+
+.buttons button {
+  background-color: white;
+  font-weight: bold;
+  border: 1px gray solid;
+  border-radius: 10px;
+}
+.output {
+  width: inherit;
+
+  display: grid;
+
 }

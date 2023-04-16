@@ -1,33 +1,44 @@
 
 const ctx = document.getElementById('myChart');
 
-new Chart(ctx, {
+const chart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ['2008', '2009', '2010','2011', '2012', '2013', '2014', '2015', '2016','2017', '2018', '2019', '2020', '2021', '2022'],
+    labels: [],
     datasets: [{
       label: 'Статистика за последние 15 лет',
-      data: [12, 19, 3, 5, 2, 3],
       borderWidth: 1,
-      
-      
+      data: [],
     }]
   },
   options: {
     scales: {
       y: {
         beginAtZero: true
-        
       }
-    }
+    },
+    responsive: true
   }
 });
 
 document.getElementById('dmitrichenko').addEventListener('click', () => {
-  getDmitrichenko();
+  get('d');
 })
 
-async function getDmitrichenko() {
+document.getElementById('zhukovsky').addEventListener('click', () => {
+  get('z');
+})
+
+document.getElementById('miagkov').addEventListener('click', () => {
+  get('m');
+})
+
+document.getElementById('voronov').addEventListener('click', () => {
+  get('v');
+})
+
+
+async function get(type) {
   const response = await fetch(`/api/dmitrichenko`, {
     method: "GET",
     headers: { "Accept": "application/json" }
@@ -35,6 +46,13 @@ async function getDmitrichenko() {
   if (response.ok === true) {
     const data = await response.json();
     
+    switch (type) {
+      case ('d'):
+        D(data);
+        break;
+    }
+
+    chart.update()
   }
   else {
     // если произошла ошибка, получаем сообщение об ошибке
@@ -42,3 +60,27 @@ async function getDmitrichenko() {
     console.log(error.message); // и выводим его на консоль
   }
 }
+
+function D(data) {
+  chart.data.datasets.push({
+    borderWidth: 1,
+    data: [],
+  })
+  for (let i = 0; i < data.data.length; i++) {
+    chart.data.datasets[0].data[i] = data.data[i]
+    chart.data.datasets[1].data[i] = data.valueChanges[i]
+  }
+  
+  chart.data.labels = data.yearTable;
+}
+
+/*function Z(data) {
+  for (let i = 0; i < data.data.length; i++) {
+    chart.data.datasets[0].data[i] = data.data[i]
+  }
+  console.log(data);
+  for (let i = 0; i < data.valueChanges.length; i++) {
+    chart.data.datasets[0].data[i] = data.valueChanges[i]
+  }
+  chart.data.labels = data.yearTable;*/
+

@@ -18,24 +18,25 @@ namespace lab3_WebApplication
             app.UseStaticFiles();
 
 
-            app.MapGet("/api/voronov", (string id) =>
+            app.MapGet("/api/voronov", () =>
             {
 
             });
 
-            app.MapGet("/api/miagkov", (string id) =>
+            app.MapGet("/api/miagkov", () =>
             {
 
             });
 
-            app.MapGet("/api/dmitrichenko", (string id) =>
+            app.MapGet("/api/dmitrichenko", () =>
             {
+                Console.WriteLine(1);
                 ISerializable response = new DataSource();
                 return Results.Json(response);
             });
            
 
-            app.MapGet("/api/", (string id) =>
+            app.MapGet("/api/zhukovsky", () =>
             {
 
             });

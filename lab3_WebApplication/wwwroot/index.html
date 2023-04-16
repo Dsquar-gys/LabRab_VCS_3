@@ -8,44 +8,23 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
-<style></style>
-<div class="graph">
-    <canvas id="myChart" ></canvas>
-</div>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    const ctx = document.getElementById('myChart');
-  
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['2008', '2009', '2010','2011', '2012', '2013', '2014', '2015', '2016','2017', '2018', '2019', '2020', '2021', '2022'],
-        datasets: [{
-          label: 'Статистика за последние 15 лет',
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1,
-          
-
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-            
-          }
-        }
-      }
-    });
-  </script>
-
 <body>
-<br>
-<div class="button">
-<input type=button value= "Дмитриченко">
-<input type=button value="Жуковский">
-<input type=button value="Мягков">
-</div>
+  <div class="container">
 
+    <div class="graph">
+      <canvas id="myChart" ></canvas>
+    </div>
+    <div class="buttons">
+      <button id="dmitrichenko">Дмитриченко</button>
+      <button id="miagkov">Мягков</button>
+      <button id="zhukovsky">Жуковский</button>
+      <button id="voronov">Воронов</button>
+    </div>
+    <div class="output" id="output">
+
+    </div>
+  </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="index.js"></script>
 </html>
