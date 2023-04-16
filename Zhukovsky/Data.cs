@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using IronXL;
 
-namespace LabRab_3.Жуковский
+namespace LabRab_3
 {
     public class Data
     {
@@ -20,7 +20,7 @@ namespace LabRab_3.Жуковский
         }
         public static void ReadExcel()
         {
-            workBook = new WorkBook("C:\\Users\\ssaddmi\\Desktop\\ТП\\lab3\\Население.xlsx");
+            workBook = new WorkBook("../Жуковский/Население.xlsx");
             workSheet = workBook.WorkSheets.First();
         }
         public void SetData()

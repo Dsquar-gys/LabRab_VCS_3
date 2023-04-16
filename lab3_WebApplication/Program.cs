@@ -30,7 +30,6 @@ namespace lab3_WebApplication
 
             app.MapGet("/api/dmitrichenko", () =>
             {
-                Console.WriteLine(1);
                 ISerializable response = new DataSource();
                 return Results.Json(response);
             });
@@ -38,7 +37,8 @@ namespace lab3_WebApplication
 
             app.MapGet("/api/zhukovsky", () =>
             {
-
+                ISerializable response = new Data();
+                return Results.Json(response);
             });
 
             app.Run();

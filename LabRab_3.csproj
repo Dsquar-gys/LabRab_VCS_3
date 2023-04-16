@@ -459,7 +459,6 @@
     <Content Include="License-LGPL.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Жуковский\" />
     <Folder Include="Мягков\" />
   </ItemGroup>
   <ItemGroup>
