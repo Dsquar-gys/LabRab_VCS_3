@@ -1,42 +1,35 @@
 ﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Text.Json;
-using LabRab_3.Дмитриченко;
+
 
 namespace LabRab_3
 {
     static class Program
     {
-        public static ISerializable response;
+        /*public static ISerializable response;
         public static HttpListener listener;
         public static string URL = @"http://127.0.0.1:8888/connection/";
         public static string responseText =
     @"<!DOCTYPE html>
-    <html>
-        <head>
-            <meta charset='utf8'>
-            <title>METANIT.COM</title>
-        </head>
-        <body>
-            <h2>TEST</h2>
-        </body>
-    </html>";
+        <html>
+            <head>
+                <meta charset='utf8'>
+                <title>METANIT.COM</title>
+            </head>
+            <body>
+                <h2>TEST</h2>
+            </body>
+        </html>";
 
-        [STAThread]
+        [STAThread]*/
         static void Main()
         {
-            Application.EnableVisualStyles();
+            /*Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            RunServer();
+            RunServer();*/
         }
 
-        static void RunServer()
+        /*static void RunServer()
         {
             listener = new HttpListener();
             listener.Prefixes.Add(URL);
@@ -62,17 +55,17 @@ namespace LabRab_3
                 {
                     response = new DataSource();
                     responseText = @"<!DOCTYPE html>
-    <html>
-        <head>
-            <meta charset='utf8'>
-            <title>METANIT.COM</title>
-        </head>
-        <body>
-            <h2>"+ JsonSerializer.Serialize<List<int>>(response.yearTable) +
+        <html>
+            <head>
+                <meta charset='utf8'>
+                <title>METANIT.COM</title>
+            </head>
+            <body>
+                <h2>" + JsonSerializer.Serialize<List<int>>(response.yearTable) +
                    JsonSerializer.Serialize<List<float>>(response.data) +
                    JsonSerializer.Serialize<List<float>>(response.valueChanges) + @"</h2>
-        </body>
-    </html>";
+            </body>
+        </html>";
                 }
                 // response info
                 string disableSubmit = !runServer ? "disable" : "";
@@ -80,10 +73,15 @@ namespace LabRab_3
                 resp.ContentType = "text/html";
                 resp.ContentEncoding = Encoding.UTF8;
                 resp.ContentLength64 = data.LongLength;
-                
+
                 await resp.OutputStream.WriteAsync(data, 0, data.Length);
                 resp.Close();
             }
         }
-    }
+    }*/
+
+
+
+
+}
 }

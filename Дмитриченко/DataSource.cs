@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using IronXL;
 
-namespace LabRab_3.Дмитриченко
+namespace LabRab_3
 {
     public class GridSource
     {
