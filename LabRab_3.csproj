@@ -426,6 +426,7 @@
     <Compile Include="ISerializable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Zhukovsky\Data.cs" />
     <Compile Include="Дмитриченко\DataSource.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -448,6 +449,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Zhukovsky\Население.xlsx" />
     <None Include="Дмитриченко\ВВП.xlsx" />
   </ItemGroup>
   <ItemGroup>
