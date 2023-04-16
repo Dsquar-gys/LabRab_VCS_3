@@ -27,8 +27,6 @@ namespace LabRab_3
         </body>
     </html>";
 
-        public static Form1 form;
-
         [STAThread]
         static void Main()
         {
@@ -53,24 +51,13 @@ namespace LabRab_3
         static async Task Server()
         {
             bool runServer = true;
-            // while a user haven't visitted the shutdown url, keep on handling request
             while (runServer)
             {
-                // will wait here until we hear from a connection
                 HttpListenerContext ctx = await listener.GetContextAsync();
 
-                // peel out the requests and response objects
                 HttpListenerRequest req = ctx.Request;
                 HttpListenerResponse resp = ctx.Response;
 
-                // print out some info about the request
-                Console.WriteLine(req.Url.ToString());
-                //MessageBox.Show(req.HttpMethod);
-                Console.WriteLine(req.UserHostName);
-                Console.WriteLine(req.UserHostAddress);
-                Console.WriteLine();
-
-                // if 'shutdown' url requested with POST, then shutdown the server after serving the page
                 if (req.HttpMethod == "GET")
                 {
                     response = new DataSource();
@@ -87,13 +74,13 @@ namespace LabRab_3
         </body>
     </html>";
                 }
-                // write the response info
+                // response info
                 string disableSubmit = !runServer ? "disable" : "";
                 byte[] data = Encoding.UTF8.GetBytes(String.Format(responseText, disableSubmit));
                 resp.ContentType = "text/html";
                 resp.ContentEncoding = Encoding.UTF8;
                 resp.ContentLength64 = data.LongLength;
-                // write out to the response stream (async) and close
+                
                 await resp.OutputStream.WriteAsync(data, 0, data.Length);
                 resp.Close();
             }
