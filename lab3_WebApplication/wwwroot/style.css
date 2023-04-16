@@ -8,11 +8,13 @@
 	font-family: 'Times New Roman', Times, serif;
   width: 900px;
 }
-.graph{
-	height: 450px; 
+.graph {
+
 	width: inherit;
 }
+
 .buttons {
+  margin: 40px auto;
   flex-direction: row;
   width: inherit;
 	display: flex;
@@ -28,8 +30,9 @@
   border-radius: 10px;
 }
 .output {
+  justify-items: center;
   width: inherit;
-
+  grid-template-columns: repeat(3, 1fr);
   display: grid;
 
 }
