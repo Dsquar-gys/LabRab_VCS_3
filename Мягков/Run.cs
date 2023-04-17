@@ -23,7 +23,7 @@ namespace LabRab_3.Мягков
 
         public void CreateDays()
         {
-            Random random = new Random();
+            Random random = new Random((int)(DateTime.Now.Ticks));
             DateTime today = DateTime.Now;
             DateTime temp = today;
             while (today.Day - 1 != temp.Day)
@@ -31,11 +31,11 @@ namespace LabRab_3.Мягков
                 Days.Add(new Day(
                     temp.Day,
                     temp.ToString(),
-                    random.Next(9, 10) / 15,
-                    random.Next(1, 4) / 15,
-                    random.Next(5, 9) / 15,
-                    random.Next(9, 10) / 15,
-                    random.Next(1, 4) / 15,
+                    (Decimal)((random.Next(200,300))) / 15,
+                    (Decimal)((random.Next(50, 100))) / 15,
+                    (Decimal)((random.Next(100, 200))) / 15,
+                    (random.Next(100, 400)),
+                    (Decimal)((random.Next(5000, 20000))) / 15,
                     random.Next(30, 180)
                     ));
                 temp = temp.AddDays(1);
@@ -43,29 +43,32 @@ namespace LabRab_3.Мягков
         }
         public void SaveDays()
         {
-
-            StreamWriter writer = new StreamWriter("Data.json", false);
-
+            CreateDays();
+            using (FileStream fs = new FileStream("../../Мягков/Data.json", FileMode.Truncate))
+            {
+                
+                JsonSerializer.Serialize<List<Day>>(fs, Days);
+                Console.WriteLine(JsonSerializer.Serialize<List<Day>>(Days));
+            }
+            /*StreamWriter writer = new StreamWriter("Data.json", false);
+            Console.WriteLine(Days.Count);
             writer.Write(JsonSerializer.Serialize<List<Day>>(Days));
-
-            writer.Close();
+            Console.WriteLine(JsonSerializer.Serialize(Days));
+            writer.Close();*/
 
         }
 
         public void GetDays()
         {
-            StreamReader reader = new StreamReader("Data.json");
-
-            string s = reader.ReadToEnd();
-
-            if (s != "")
-                Days = JsonSerializer.Deserialize<List<Day>>(s);
-
-            reader.Close();
+            using (FileStream fs = new FileStream("../../Мягков/Data.json", FileMode.Open))
+            {
+                Days = JsonSerializer.Deserialize<List<Day>>(fs);
+            }
         }
 
         public void Print()
         {
+            
             foreach (Day day in Days)
             {
                 Console.WriteLine(day.Date);
@@ -81,6 +84,8 @@ namespace LabRab_3.Мягков
                 if (s == "Сб" || s == "Вс")
                 {
                     Sum += day.Distance;
+                    Console.WriteLine(Sum);
+
                 }
             }
 
