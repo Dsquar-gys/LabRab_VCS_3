@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using IronXL;
@@ -20,7 +21,7 @@ namespace LabRab_3
         }
         public static void ReadExcel()
         {
-            workBook = new WorkBook("../Жуковский/Население.xlsx");
+            workBook = new WorkBook("../Zhukovsky/Население.xlsx");
             workSheet = workBook.WorkSheets.First();
         }
         public void SetData()
@@ -32,7 +33,7 @@ namespace LabRab_3
             }
             foreach (var cell in workSheet["B2:B16"])
             {
-                data.Add(int.Parse(cell.Text));
+                data.Add(float.Parse(cell.Text));
             }
             for (int i = 1; i < data.Count; i++)
             {
