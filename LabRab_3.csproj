@@ -426,6 +426,7 @@
     <Compile Include="ISerializable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Voronov\Calculation.cs" />
     <Compile Include="Zhukovsky\Data.cs" />
     <Compile Include="Дмитриченко\DataSource.cs" />
     <Compile Include="Мягков\Run.cs" />
