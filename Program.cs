@@ -25,8 +25,14 @@ namespace LabRab_3
         {
             /*Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            RunServer();*/
+            Calculation calculation = new Calculation();
+            calculation.GenerationData();
+            calculation.SaveList();
+            calculation.GetList();
+            calculation.PrintToConsole();
+            calculation.FindMaxDay();
+            Console.WriteLine($"{calculation.IndexDay}: {calculation.MaxValue}");
+            RunServer();
         }
 
         /*static void RunServer()
@@ -83,5 +89,6 @@ namespace LabRab_3
 
 
 
-}
+        }
+    }
 }

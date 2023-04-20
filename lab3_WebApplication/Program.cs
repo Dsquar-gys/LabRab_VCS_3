@@ -1,9 +1,6 @@
 // начальные данные
-
-using Azure;
 using LabRab_3;
-using System;
-using System.Text.Json;
+using LabRab_3.Voronov;
 
 namespace lab3_WebApplication
 {
@@ -20,7 +17,10 @@ namespace lab3_WebApplication
 
             app.MapGet("/api/v", () =>
             {
-                
+                Calculation calculation = new Calculation();
+                calculation.GetList();
+                calculation.FindMaxDay();
+                return Results.Json(calculation);
             });
 
             app.MapGet("/api/m", () =>
@@ -38,8 +38,8 @@ namespace lab3_WebApplication
 
             app.MapGet("/api/z", () =>
             {
-                Data response = new Data();
-                return Results.Json(response);
+                Data data = new Data();
+                return Results.Json(data);
             });
 
             app.Run();

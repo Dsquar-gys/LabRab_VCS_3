@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace LabRab_3
 {
@@ -43,7 +40,9 @@ namespace LabRab_3
                     speed,
                     (random.Next(100, 400)),
                     minutes * speed + random.Next(100, 400) / 5,
-                    minutes
+                    minutes,
+                    temp.ToString("ddd",
+                        new CultureInfo("ru-Ru"))
                     ));
                 temp = temp.AddDays(1);
             }
@@ -81,9 +80,8 @@ namespace LabRab_3
         {
             foreach (Day day in Days)
             {
-                string s = DateTime.Parse(day.Date).ToString("ddd",
-                        new CultureInfo("ru-Ru"));
-                if (s == "Сб" || s == "Вс")
+                
+                if (day.DayOfWeek == "сб" || day.DayOfWeek == "вс")
                 {
                     Sum += day.Distance;
                     Console.WriteLine(Sum);
@@ -104,7 +102,8 @@ namespace LabRab_3
             decimal averageSpeed,
             decimal averagePulse,
             decimal distance,
-            int minutes)
+            int minutes,
+            string dayOfWeek)
         {
             Number = number;
             Date = date;
@@ -114,8 +113,9 @@ namespace LabRab_3
             AveragePulse = averagePulse;
             Distance = distance;
             Minutes = minutes;
+            DayOfWeek = dayOfWeek;
         }
-
+        public string DayOfWeek { get; set; }
         public int Number { get; set; }
         public string Date { get; set; }
         public decimal MaxSpeed { get; set; }
