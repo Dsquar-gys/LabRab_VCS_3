@@ -16,7 +16,7 @@ namespace LabRab_3
         {
             Days = new List<Day>();
             Sum = 0;
-            /*SaveDays();*/
+            
             GetDays();
             FindSum();
         }

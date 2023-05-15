@@ -49,7 +49,7 @@ function D(data) {
   console.log(data)
   const doc = document.getElementById('graph')
   doc.innerHTML = ''
-/*  const c1 = document.createElement('canvas')*/
+
   doc.innerHTML += '<canvas id="myChart1"></canvas>'
   doc.innerHTML += '<canvas id="myChart2" ></canvas>'
   

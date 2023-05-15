@@ -43,14 +43,12 @@ namespace LabRab_3
 
         public void ExtractData()
         {
-            //List<GridSource> src = new List<GridSource>();
             var rows = sheetExcel.Rows;
             foreach (var row in rows.Skip(1))
             {
                 string[] temp = row.Take(2).Select(x => x.Value.ToString()).ToArray();
-                //src.Add(new GridSource(temp[0],temp[1]));
                 yearTable.Add(int.Parse(temp[0]));
-                data.Add(float.Parse(temp[1]/*.Replace('.',',')*/));
+                data.Add(float.Parse(temp[1]));
             }
             valueChanges.Add(0);
             for (int i = 1; i < data.Count; i++)
